@@ -1,1 +1,10 @@
-@import "~bootstrap/scss/bootstrap.scss";
+@import "~bootstrap/scss/bootstrap";
+
+// Aggiungi le tue regole personalizzate qui
+.card-text {
+    font-size: 0.8rem; // Dimensione del testo della descrizione
+}
+
+.card {
+    min-height: 40rem; // Altezza minima delle card
+}
