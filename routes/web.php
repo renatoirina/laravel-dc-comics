@@ -1,7 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\ComicController;
+use App\Http\Controllers\ComicController as ControllersComicController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ComicController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,14 +15,12 @@ use App\Http\Controllers\ComicController;
 |
 */
 
-// Rotta per la pagina principale che mostra l'elenco dei fumetti
-Route::get('/', [ComicController::class, 'index'])->name('comics.home');
+Route::get('/', function () {
+    return view('home');
+});
 
-// Rotta per visualizzare il dettaglio di un fumetto
-Route::get('/comics/{comic}', [ComicController::class, 'show'])->name('comics.show');
 
-// Rotta per visualizzare il form di creazione di un nuovo fumetto
-Route::get('/comics/create', [ComicController::class, 'create'])->name('comics.create');
+Route::get('/comics', [ControllersComicController::class, "index"])->name("comic.index");
+// Route::get("/comics/{comic}", [ComicController::class, "show"])->name("comic.show");
 
-// Rotta per salvare il nuovo fumetto nel database
-Route::post('/comics', [ComicController::class, 'store'])->name('comics.store');
+Route::resource("comics", ControllersComicController::class);
